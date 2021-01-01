@@ -6,13 +6,16 @@ import (
 	"flag"
 	"fmt"
 	"io"
+	"log"
 	"os"
 )
 
 var ErrNonPositiveN = errors.New("n must be positive")
 
 func main() {
-	run(os.Stdout, os.Args)
+	if err := run(os.Stdout, os.Args); err != nil {
+		log.Fatal(err)
+	}
 }
 
 func run(out io.Writer, args []string) error {
